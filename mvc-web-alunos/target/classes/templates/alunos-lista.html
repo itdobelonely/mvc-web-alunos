@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alunos</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #007bff; color: white; }
+        tr:nth-child(even) { background: #f2f2f2; }
+        p { color: #888; }
+        a { display: inline-block; margin-top: 20px; color: #007bff; }
+    </style>
+</head>
+<body>
+    <!--
+        VIEW — exibe a lista de alunos recebida do Controller via Model.
+        Usa Thymeleaf (th:each) para iterar sobre os dados.
+    -->
+    <h1>Alunos Cadastrados</h1>
+
+    <div th:if="${alunos != null and !#lists.isEmpty(alunos)}">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Matrícula</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="aluno, stat : ${alunos}">
+                    <td th:text="${stat.count}"></td>
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${aluno.matricula}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p th:if="${alunos == null or #lists.isEmpty(alunos)}">Nenhum aluno cadastrado ainda.</p>
+
+    <a href="/alunos">← Cadastrar novo aluno</a>
+</body>
+</html>
