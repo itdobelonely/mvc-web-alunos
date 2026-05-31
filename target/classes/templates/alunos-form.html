@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Aluno</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #333; }
+        label { display: block; margin-top: 12px; font-weight: bold; }
+        input[type="text"] { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+        button { margin-top: 16px; padding: 10px 24px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        a { display: block; margin-top: 20px; color: #007bff; }
+    </style>
+</head>
+<body>
+    <!--
+        VIEW — só apresenta dados ao usuário e coleta entradas.
+        Não contém lógica de negócio nem acessa banco de dados.
+    -->
+    <h1>Cadastro de Aluno</h1>
+
+    <form action="/alunos" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
+
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" placeholder="Ex: 2024001" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <a href="/alunos/lista">Ver lista de alunos</a>
+</body>
+</html>
